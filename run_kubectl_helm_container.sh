@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-docker run -it --rm -v ${HOME}:/root/ -v ${PWD}:/work -w /work --net host alpine sh
+# docker run -it --rm -v ${HOME}:/root/ -v ${PWD}:/work -w /work --net host alpine sh
 
 # install curl 
 apk add --no-cache curl
