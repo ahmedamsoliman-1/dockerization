@@ -1,13 +1,14 @@
 package main
 
 import (
-  "context"
+	"context"
 	"fmt"
 	"os"
 	"os/signal"
 	"strings"
 	"sync"
 	"syscall"
+
 	"gopkg.in/Shopify/sarama.v1"
 )
 
@@ -27,12 +28,12 @@ func main() {
 	config.Version = version
 	config.Consumer.Group.Rebalance.Strategy = sarama.BalanceStrategyRoundRobin
 	config.Consumer.Offsets.Initial = sarama.OffsetOldest
-	
-  ctx, cancel := context.WithCancel(context.Background())
+
+	ctx, cancel := context.WithCancel(context.Background())
 	client, err := sarama.NewConsumerGroup(strings.Split(kafkaBrokers, ","), kafkaGroup, config)
 
-  if err != nil {
-	  fmt.Printf("Failed to init Kafka consumer group: %s", err)
+	if err != nil {
+		fmt.Printf("Failed to init Kafka consumer group: %s", err)
 		panic(err)
 	}
 
@@ -59,8 +60,8 @@ func main() {
 			consumer.ready = make(chan bool)
 		}
 	}()
-  <-consumer.ready // Await till the consumer has been set up
-  fmt.Println("Sarama consumer up and running!...")
+	<-consumer.ready // Await till the consumer has been set up
+	fmt.Println("Sarama consumer up and running!...")
 
 	sigterm := make(chan os.Signal, 1)
 	signal.Notify(sigterm, syscall.SIGINT, syscall.SIGTERM)
