@@ -133,9 +133,9 @@ def nodejs():
     namespace = 'example-nodejs-app'
 
     run_command('kubectl get nodes')
-    # run_command(f'kubectl create ns {namespace}')
-    run_command(f'kubectl apply -n {namespace} -f nodejs/deployment/deployment.yaml')
-    run_command(f'kubectl apply -n {namespace} -f nodejs/deployment/service.yaml')
+    # run_command(f'kubectl create ns example-nodejs-app')
+    run_command(f'kubectl apply -n example-nodejs-app -f nodejs/deployment/deployment.yaml')
+    run_command(f'kubectl apply -n example-nodejs-app -f nodejs/deployment/service.yaml')
 
 def main():
     # basics()
