@@ -100,7 +100,31 @@ def load_balance_service_discovery():
     run_command('kubectl describe svc example-service')
     pass
 
+def ingress_controller_deployment():
+    # run_command('kubectl get nodes')
+    # run_command('kubectl get ns')
+    # run_command('kubectl create ns example-app')
+    # run_command('kubectl apply -n example-app -f kubernetes/deployments/deployment.yaml')
+    # run_command('kubectl apply -n example-app -f kubernetes/configmaps/configmap.yaml')
+    # run_command('kubectl apply -n example-app -f kubernetes/secrets/secret.yaml')
+    # run_command('kubectl apply -n example-app -f kubernetes/services/service.yaml')
+    # run_command('kubectl -n example-app port-forward example-deploy-6987b76b58-9cf46 5000')
 
+    run_command('kubectl apply -f kubernetes/ingress/controller/nginx/namespace.yaml')
+    run_command('kubectl apply -f kubernetes/ingress/controller/nginx/service-account.yaml')
+    run_command('kubectl apply -f kubernetes/ingress/controller/nginx/cluster-role.yaml')
+    run_command('kubectl apply -f kubernetes/ingress/controller/nginx/cluster-role-binding.yaml')
+    run_command('kubectl apply -f kubernetes/ingress/controller/nginx/configMap.yaml')
+    run_command('kubectl apply -f kubernetes/ingress/controller/nginx/custom-snippets.configmap.yaml')
+    run_command('kubectl apply -f kubernetes/ingress/controller/nginx/deployment.yaml')
+    run_command('kubectl apply -f kubernetes/ingress/controller/nginx/service.yaml')
+    run_command('kubectl apply -f kubernetes/ingress/controller/nginx/tls-secret.yaml')
+
+    run_command('kubectl apply -f kubernetes/ingress/ingress-nginx-example.yaml')
+    # run_command('kubectl')
+    # run_command('kubectl')
+    # run_command('kubectl')
+    # run_command('kubectl')
 
 def main():
     # basics()
@@ -110,7 +134,8 @@ def main():
     # version()
     # deployment()
     # config_map()
-    load_balance_service_discovery()
+    # load_balance_service_discovery()
+    ingress_controller_deployment()
     pass
 
 if __name__ == "__main__":
