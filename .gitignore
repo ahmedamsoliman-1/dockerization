@@ -23,3 +23,8 @@ pgdata
 *.sln
 *config
 *obj*
+
+.env
+auth
+*.log
+configs
