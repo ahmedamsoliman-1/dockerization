@@ -31,4 +31,5 @@ RUN npm install -g nodemon
 
 COPY ./src/ /work/src/
 
+EXPOSE 5000
 CMD node src/server.js
