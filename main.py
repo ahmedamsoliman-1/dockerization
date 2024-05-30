@@ -126,6 +126,17 @@ def ingress_controller_deployment():
     # run_command('kubectl')
     # run_command('kubectl')
 
+def nodejs():
+    # docker build . -t ahmedalimsolimansd/nodejs:v2
+    # docker push ahmedalimsolimansd/nodejs:v2
+
+    namespace = 'example-nodejs-app'
+
+    run_command('kubectl get nodes')
+    # run_command(f'kubectl create ns {namespace}')
+    run_command(f'kubectl apply -n {namespace} -f nodejs/deployment/deployment.yaml')
+    run_command(f'kubectl apply -n {namespace} -f nodejs/deployment/service.yaml')
+
 def main():
     # basics()
     # get_command()
@@ -135,7 +146,8 @@ def main():
     # deployment()
     # config_map()
     # load_balance_service_discovery()
-    ingress_controller_deployment()
+    # ingress_controller_deployment()
+    # nodejs()
     pass
 
 if __name__ == "__main__":

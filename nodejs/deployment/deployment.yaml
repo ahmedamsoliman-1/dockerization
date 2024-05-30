@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: example-app
-  replicas: 2
+  replicas: 3
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: example-app
-        image: aimvector/nodejs:v1
+        image: ahmedalimsolimansd/nodejs:v2
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
